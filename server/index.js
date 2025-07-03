@@ -3,11 +3,19 @@ import cors from 'cors';
 // Add and import your route files here, Example:
 // import yourRoute from './Routers/yourRoute.js'
 
+const express = require('express');
+const cors = require('cors');
+const authRoutes = require('./Routes/authRoutes.js'); // Import your auth routes
+
 const app = express();
 
-app.use(express.json());  // To parse JSON bodies in requests
-app.use(cors());          // To allow requests from all origins (good for development)
+app.use(cors()); 
 
+app.use(express.urlencoded({ extended: true }));
+ // To parse URL-encoded bodies in requests
+app.use(express.json());  // To parse JSON bodies in requests
+        
+app.use('/api', authRoues);
 // Add your route handlers here, Example:
 // app.use('/your-endpoint', yourRoute)
 
