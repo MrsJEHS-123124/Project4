@@ -1,16 +1,19 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import logo from './logo.svg';
+import HomePage from './Pages/HomePage.jsx';
+import LoginPage from './Pages/LoginPage.jsx';
 import './App.css';
-
+import AppNavbar from './Components/Navbar';
+import RegisterPage from './Pages/RegistrationPage.jsx';
 function App() {
   return (
     <Router>
     <div className="App">
+    <AppNavbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
     </Router>
