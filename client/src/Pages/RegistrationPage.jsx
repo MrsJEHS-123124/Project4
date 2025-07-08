@@ -6,6 +6,7 @@ function RegistrationPage() {
     const [formData, setFormData] = useState({
         username: '',
         password: '',
+        email: '',
         confirmPassword: '',
         agree: false,
     });
@@ -42,8 +43,9 @@ function RegistrationPage() {
       return;
     }
 
+    console.log (formData)
     try {
-      const res = await axios.post('/api/register', formData);
+      const res = await axios.post('http://localhost:4000/api/auth/register', formData);
       setSuccess('Registration successful!');
     } catch (err) {
       setErrors({ username: 'Username already exists' });
@@ -63,6 +65,17 @@ function RegistrationPage() {
             isInvalid={!!errors.username}
           />
           <Form.Control.Feedback type="invalid">{errors.username}</Form.Control.Feedback>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3">
